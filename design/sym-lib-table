@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name balancebot-components)(type Legacy)(uri ${KIPRJMOD}/balancebot-components.lib)(options "")(descr ""))
+)

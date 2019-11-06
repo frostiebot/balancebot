@@ -1,0 +1,1092 @@
+EESchema Schematic File Version 4
+LIBS:balancebot-cache
+EELAYER 29 0
+EELAYER END
+$Descr USLetter 11000 8500
+encoding utf-8
+Sheet 1 1
+Title "BalanceBot"
+Date "2019-10-30"
+Rev "0.2.4"
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L balancebot-components:DRV8825 A1
+U 1 1 5DADF5FC
+P 8600 1750
+F 0 "A1" H 8600 2300 50  0000 C CNN
+F 1 "DRV8825" V 8600 1750 50  0000 C CNB
+F 2 "balancebot-footprints:bb_Pololu_Breakout-16_15.2x20.3mm" H 8600 1250 50  0001 C CNN
+F 3 "https://www.pololu.com/product/2133" H 8700 1400 50  0001 C CNN
+	1    8600 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP1_Small C3
+U 1 1 5DAE052E
+P 9400 2100
+F 0 "C3" H 9491 2146 50  0000 L CNN
+F 1 "50V 100uF" H 9491 2055 50  0000 L CNN
+F 2 "balancebot-footprints:bb_C_Rect_L7.0mm_W2.5mm_P5.00mm" H 9400 2100 50  0001 C CNN
+F 3 "~" H 9400 2100 50  0001 C CNN
+	1    9400 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L balancebot-components:GY-521(MPU6050) U3
+U 1 1 5DAEE34C
+P 5800 6400
+F 0 "U3" H 5750 6950 60  0000 L CNN
+F 1 "GY-521" V 5800 6400 60  0000 C CNB
+F 2 "balancebot-footprints:bb_GY-521" H 6128 6294 60  0001 L CNN
+F 3 "" H 5750 6550 60  0000 C CNN
+	1    5800 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C1
+U 1 1 5DAF2FEB
+P 2500 6350
+F 0 "C1" H 2592 6396 50  0000 L CNN
+F 1 "100nF" H 2592 6305 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D4.3mm_W1.9mm_P5.00mm" H 2500 6350 50  0001 C CNN
+F 3 "~" H 2500 6350 50  0001 C CNN
+	1    2500 6350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C2
+U 1 1 5DAF370D
+P 3900 6350
+F 0 "C2" H 3992 6396 50  0000 L CNN
+F 1 "100nF" H 3992 6305 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D4.3mm_W1.9mm_P5.00mm" H 3900 6350 50  0001 C CNN
+F 3 "~" H 3900 6350 50  0001 C CNN
+	1    3900 6350
+	1    0    0    -1  
+$EndComp
+$Comp
+L balancebot-components:L7805 U2
+U 1 1 5DAF7042
+P 3200 6100
+F 0 "U2" H 3200 6350 60  0000 C CNN
+F 1 "L7805CV" H 3200 6100 60  0000 C CNB
+F 2 "Package_TO_SOT_THT:TO-220-3_Horizontal_TabDown" H 3225 5950 50  0001 L CIN
+F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" H 3200 6050 50  0001 C CNN
+	1    3200 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9500 1600 9000 1600
+Wire Wire Line
+	9500 1700 9000 1700
+Wire Wire Line
+	9500 1800 9000 1800
+Wire Wire Line
+	9500 1900 9000 1900
+Wire Wire Line
+	8200 1800 8200 1900
+Wire Wire Line
+	8200 1700 7900 1700
+$Comp
+L power:+3V3 #PWR0105
+U 1 1 5DB0B375
+P 7900 1200
+F 0 "#PWR0105" H 7900 1050 50  0001 C CNN
+F 1 "+3V3" H 7915 1373 50  0000 C CNN
+F 2 "" H 7900 1200 50  0001 C CNN
+F 3 "" H 7900 1200 50  0001 C CNN
+	1    7900 1200
+	1    0    0    -1  
+$EndComp
+Text GLabel 8050 800  0    50   Input ~ 0
+STEP_ENABLE
+Wire Wire Line
+	9000 1500 9150 1500
+Wire Wire Line
+	9150 1500 9150 2100
+Wire Wire Line
+	9150 2100 9000 2100
+Wire Wire Line
+	9150 2100 9150 2300
+Connection ~ 9150 2100
+$Comp
+L power:GND #PWR0107
+U 1 1 5DB0FC39
+P 9150 2300
+F 0 "#PWR0107" H 9150 2050 50  0001 C CNN
+F 1 "GND" H 9155 2127 50  0000 C CNN
+F 2 "" H 9150 2300 50  0001 C CNN
+F 3 "" H 9150 2300 50  0001 C CNN
+	1    9150 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L balancebot-components:+VMOT #PWR0109
+U 1 1 5DB11DAE
+P 9400 1200
+F 0 "#PWR0109" H 9400 1050 50  0001 C CNN
+F 1 "+VMOT" H 9400 1373 50  0000 C CNN
+F 2 "" H 9400 1200 50  0001 C CNN
+F 3 "" H 9400 1200 50  0001 C CNN
+	1    9400 1200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9000 1400 9400 1400
+Wire Wire Line
+	9400 1400 9400 1200
+Wire Wire Line
+	9400 1400 9400 2000
+Connection ~ 9400 1400
+$Comp
+L power:GND #PWR0110
+U 1 1 5DB13EAC
+P 9400 2300
+F 0 "#PWR0110" H 9400 2050 50  0001 C CNN
+F 1 "GND" H 9405 2127 50  0000 C CNN
+F 2 "" H 9400 2300 50  0001 C CNN
+F 3 "" H 9400 2300 50  0001 C CNN
+	1    9400 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9400 2200 9400 2300
+Wire Wire Line
+	8200 1400 8150 1400
+Wire Wire Line
+	8150 1400 8150 800 
+Wire Wire Line
+	8150 800  8050 800 
+Text GLabel 8050 2000 0    50   Input ~ 0
+STEP_STEP_L
+Text GLabel 8050 2100 0    50   Input ~ 0
+STEP_DIR_L
+Wire Wire Line
+	8200 2100 8050 2100
+Wire Wire Line
+	8200 2000 8050 2000
+Text GLabel 8050 2800 0    50   Input ~ 0
+STEP_ENABLE
+$Comp
+L power:+3V3 #PWR0111
+U 1 1 5DB4BCD8
+P 7900 3200
+F 0 "#PWR0111" H 7900 3050 50  0001 C CNN
+F 1 "+3V3" H 7915 3373 50  0000 C CNN
+F 2 "" H 7900 3200 50  0001 C CNN
+F 3 "" H 7900 3200 50  0001 C CNN
+	1    7900 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L balancebot-components:DRV8825 A2
+U 1 1 5DB4C0D2
+P 8600 3750
+F 0 "A2" H 8600 4300 50  0000 C CNN
+F 1 "DRV8825" V 8600 3750 50  0000 C CNB
+F 2 "balancebot-footprints:bb_Pololu_Breakout-16_15.2x20.3mm" H 8600 3250 50  0001 C CNN
+F 3 "https://www.pololu.com/product/2133" H 8700 3400 50  0001 C CNN
+	1    8600 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8200 3400 8150 3400
+Wire Wire Line
+	8150 3400 8150 2800
+Wire Wire Line
+	8150 2800 8050 2800
+Wire Wire Line
+	8200 3800 8200 3900
+Wire Wire Line
+	8200 4000 8050 4000
+Wire Wire Line
+	8200 4100 8050 4100
+$Comp
+L balancebot-components:+VMOT #PWR0113
+U 1 1 5DB53BE0
+P 9400 3200
+F 0 "#PWR0113" H 9400 3050 50  0001 C CNN
+F 1 "+VMOT" H 9400 3373 50  0000 C CNN
+F 2 "" H 9400 3200 50  0001 C CNN
+F 3 "" H 9400 3200 50  0001 C CNN
+	1    9400 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP1_Small C4
+U 1 1 5DB53F97
+P 9400 4100
+F 0 "C4" H 9491 4146 50  0000 L CNN
+F 1 "50V 100uF" H 9491 4055 50  0000 L CNN
+F 2 "balancebot-footprints:bb_C_Rect_L7.0mm_W2.5mm_P5.00mm" H 9400 4100 50  0001 C CNN
+F 3 "~" H 9400 4100 50  0001 C CNN
+	1    9400 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0114
+U 1 1 5DB5471A
+P 9150 4350
+F 0 "#PWR0114" H 9150 4100 50  0001 C CNN
+F 1 "GND" H 9155 4177 50  0000 C CNN
+F 2 "" H 9150 4350 50  0001 C CNN
+F 3 "" H 9150 4350 50  0001 C CNN
+	1    9150 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0115
+U 1 1 5DB54D4D
+P 9400 4350
+F 0 "#PWR0115" H 9400 4100 50  0001 C CNN
+F 1 "GND" H 9405 4177 50  0000 C CNN
+F 2 "" H 9400 4350 50  0001 C CNN
+F 3 "" H 9400 4350 50  0001 C CNN
+	1    9400 4350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9000 3600 9500 3600
+Wire Wire Line
+	9000 3700 9500 3700
+Wire Wire Line
+	9000 3800 9500 3800
+Wire Wire Line
+	9000 3900 9500 3900
+Wire Wire Line
+	9000 3400 9400 3400
+Wire Wire Line
+	9400 3400 9400 3200
+Wire Wire Line
+	9400 3400 9400 4000
+Connection ~ 9400 3400
+Wire Wire Line
+	9400 4200 9400 4350
+Wire Wire Line
+	9000 4100 9150 4100
+Wire Wire Line
+	9150 4100 9150 4350
+Wire Wire Line
+	9000 3500 9150 3500
+Wire Wire Line
+	9150 3500 9150 4100
+Connection ~ 9150 4100
+Wire Wire Line
+	7900 3700 8200 3700
+Text GLabel 8050 4000 0    50   Input ~ 0
+STEP_STEP_R
+Text GLabel 8050 4100 0    50   Input ~ 0
+STEP_DIR_R
+Text Notes 6950 5950 0    79   ~ 16
+Stepper and Servo Control
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	10400 600  6900 600 
+$Comp
+L power:+3V3 #PWR0118
+U 1 1 5DBA8C50
+P 5250 5850
+F 0 "#PWR0118" H 5250 5700 50  0001 C CNN
+F 1 "+3V3" H 5265 6023 50  0000 C CNN
+F 2 "" H 5250 5850 50  0001 C CNN
+F 3 "" H 5250 5850 50  0001 C CNN
+	1    5250 5850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5400 6050 5250 6050
+Wire Wire Line
+	5250 6050 5250 5850
+$Comp
+L power:GND #PWR0119
+U 1 1 5DBAD235
+P 5250 6850
+F 0 "#PWR0119" H 5255 6677 50  0001 C CNN
+F 1 "GND" H 5255 6677 50  0000 C CNN
+F 2 "" H 5250 6850 50  0001 C CNN
+F 3 "" H 5250 6850 50  0001 C CNN
+	1    5250 6850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5400 6150 5250 6150
+Text GLabel 5100 6250 0    50   Input ~ 0
+MPU_SCL
+Text GLabel 5100 6350 0    50   Input ~ 0
+MPU_SDA
+Wire Wire Line
+	5400 6250 5100 6250
+Wire Wire Line
+	5400 6350 5100 6350
+NoConn ~ 5400 6450
+NoConn ~ 5400 6550
+NoConn ~ 5400 6650
+$Comp
+L power:GND #PWR02
+U 1 1 5DBD6036
+P 800 6750
+F 0 "#PWR02" H 805 6577 50  0001 C CNN
+F 1 "GND" H 805 6577 50  0000 C CNN
+F 2 "" H 800 6750 50  0001 C CNN
+F 3 "" H 800 6750 50  0001 C CNN
+	1    800  6750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+BATT #PWR01
+U 1 1 5DBDE325
+P 800 6550
+F 0 "#PWR01" H 800 6400 50  0001 C CNN
+F 1 "+BATT" H 815 6723 50  0000 C CNN
+F 2 "" H 800 6550 50  0001 C CNN
+F 3 "" H 800 6550 50  0001 C CNN
+	1    800  6550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Screw_Terminal_01x02 J2
+U 1 1 5DBEE897
+P 1550 6600
+F 0 "J2" H 1630 6592 50  0000 L CNN
+F 1 "11.1V Batt" H 1630 6501 50  0000 L CNN
+F 2 "balancebot-footprints:bb_TE_282837-2" H 1550 6600 50  0001 C CNN
+F 3 "https://docs.google.com/viewerng/viewer?url=https://s3.amazonaws.com/snapeda/datasheet/282837-2_TE_Connectivity.pdf" H 1550 6600 50  0001 C CNN
+	1    1550 6600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Screw_Terminal_01x02 J1
+U 1 1 5DBF2801
+P 1550 6000
+F 0 "J1" H 1630 5992 50  0000 L CNN
+F 1 "Switch" H 1630 5901 50  0000 L CNN
+F 2 "balancebot-footprints:bb_TE_282837-2" H 1550 6000 50  0001 C CNN
+F 3 "~" H 1550 6000 50  0001 C CNN
+	1    1550 6000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1350 6600 800  6600
+Wire Wire Line
+	800  6600 800  6550
+Wire Wire Line
+	1350 6700 800  6700
+Wire Wire Line
+	800  6700 800  6750
+$Comp
+L power:+BATT #PWR04
+U 1 1 5DBFE426
+P 1150 5850
+F 0 "#PWR04" H 1150 5700 50  0001 C CNN
+F 1 "+BATT" H 1165 6023 50  0000 C CNN
+F 2 "" H 1150 5850 50  0001 C CNN
+F 3 "" H 1150 5850 50  0001 C CNN
+	1    1150 5850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR017
+U 1 1 5DBFFFD8
+P 3900 5850
+F 0 "#PWR017" H 3900 5700 50  0001 C CNN
+F 1 "+5V" H 3915 6023 50  0000 C CNN
+F 2 "" H 3900 5850 50  0001 C CNN
+F 3 "" H 3900 5850 50  0001 C CNN
+	1    3900 5850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3650 6000 3900 6000
+Wire Wire Line
+	3900 6000 3900 5850
+$Comp
+L balancebot-components:+VMOT #PWR014
+U 1 1 5DC0493E
+P 2500 5850
+F 0 "#PWR014" H 2500 5700 50  0001 C CNN
+F 1 "+VMOT" H 2500 6023 50  0000 C CNN
+F 2 "" H 2500 5850 50  0001 C CNN
+F 3 "" H 2500 5850 50  0001 C CNN
+	1    2500 5850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2750 6000 2500 6000
+Wire Wire Line
+	2500 6000 2500 5850
+$Comp
+L power:GND #PWR016
+U 1 1 5DC07076
+P 3200 6750
+F 0 "#PWR016" H 3205 6577 50  0001 C CNN
+F 1 "GND" H 3205 6577 50  0000 C CNN
+F 2 "" H 3200 6750 50  0001 C CNN
+F 3 "" H 3200 6750 50  0001 C CNN
+	1    3200 6750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3200 6450 3200 6750
+Wire Wire Line
+	2500 6000 2500 6250
+Connection ~ 2500 6000
+Wire Wire Line
+	3900 6000 3900 6250
+Connection ~ 3900 6000
+Wire Wire Line
+	2500 6450 2500 6750
+Wire Wire Line
+	3900 6450 3900 6750
+$Comp
+L power:GND #PWR015
+U 1 1 5DC18A58
+P 2500 6750
+F 0 "#PWR015" H 2505 6577 50  0001 C CNN
+F 1 "GND" H 2505 6577 50  0000 C CNN
+F 2 "" H 2500 6750 50  0001 C CNN
+F 3 "" H 2500 6750 50  0001 C CNN
+	1    2500 6750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR018
+U 1 1 5DC18DE3
+P 3900 6750
+F 0 "#PWR018" H 3905 6577 50  0001 C CNN
+F 1 "GND" H 3905 6577 50  0000 C CNN
+F 2 "" H 3900 6750 50  0001 C CNN
+F 3 "" H 3900 6750 50  0001 C CNN
+	1    3900 6750
+	1    0    0    -1  
+$EndComp
+$Comp
+L balancebot-components:+VMOT #PWR03
+U 1 1 5DC19BB8
+P 800 5850
+F 0 "#PWR03" H 800 5700 50  0001 C CNN
+F 1 "+VMOT" H 800 6023 50  0000 C CNN
+F 2 "" H 800 5850 50  0001 C CNN
+F 3 "" H 800 5850 50  0001 C CNN
+	1    800  5850
+	1    0    0    -1  
+$EndComp
+Text Notes 650  7850 0    79   ~ 16
+Power
+Text Notes 4800 7300 0    79   ~ 16
+Inputs
+$Comp
+L balancebot-components:ESP-32-NodeMCU-32S U1
+U 1 1 5DCC291E
+P 2600 2300
+F 0 "U1" H 2600 3500 50  0000 C CNN
+F 1 "ESP32" V 2600 2300 50  0000 C CNB
+F 2 "balancebot-footprints:bb_ESP32-DEVKITC" H 2600 1200 50  0001 C CNN
+F 3 "https://einstronic.com/wp-content/uploads/2017/06/NodeMCU-32S-Catalogue.pdf" H 2600 1000 50  0001 C CNN
+	1    2600 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR07
+U 1 1 5DCC3DD0
+P 1850 1300
+F 0 "#PWR07" H 1850 1150 50  0001 C CNN
+F 1 "+3V3" H 1865 1473 50  0000 C CNN
+F 2 "" H 1850 1300 50  0001 C CNN
+F 3 "" H 1850 1300 50  0001 C CNN
+	1    1850 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2050 1350 1850 1350
+Wire Wire Line
+	1850 1350 1850 1300
+$Comp
+L power:+5V #PWR05
+U 1 1 5DCD19E1
+P 1600 1300
+F 0 "#PWR05" H 1600 1150 50  0001 C CNN
+F 1 "+5V" H 1615 1473 50  0000 C CNN
+F 2 "" H 1600 1300 50  0001 C CNN
+F 3 "" H 1600 1300 50  0001 C CNN
+	1    1600 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 1300 1600 3150
+Wire Wire Line
+	1600 3150 2050 3150
+Wire Wire Line
+	2050 2650 1850 2650
+Wire Wire Line
+	1850 2650 1850 3250
+$Comp
+L power:GND #PWR012
+U 1 1 5DCE5161
+P 3350 3250
+F 0 "#PWR012" H 3350 3000 50  0001 C CNN
+F 1 "GND" H 3355 3077 50  0000 C CNN
+F 2 "" H 3350 3250 50  0001 C CNN
+F 3 "" H 3350 3250 50  0001 C CNN
+	1    3350 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3150 1350 3350 1350
+Wire Wire Line
+	3350 1350 3350 1950
+Wire Wire Line
+	3150 1950 3350 1950
+Text GLabel 1300 2350 0    50   Output ~ 0
+STEP_ENABLE
+Wire Wire Line
+	2050 2750 1300 2750
+Text GLabel 1300 1950 0    50   Output ~ 0
+STEP_STEP_L
+Text GLabel 1300 2150 0    50   Output ~ 0
+STEP_STEP_R
+Text GLabel 1300 2250 0    50   Output ~ 0
+STEP_DIR_R
+Wire Wire Line
+	2050 2150 1300 2150
+Wire Wire Line
+	2050 2250 1300 2250
+$Comp
+L Connector_Generic:Conn_01x04 J5
+U 1 1 5DD4AE70
+P 9700 1700
+F 0 "J5" H 9780 1646 50  0000 L CNN
+F 1 "Left Motor Interface" H 9780 1601 50  0001 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 9700 1700 50  0001 C CNN
+F 3 "~" H 9700 1700 50  0001 C CNN
+	1    9700 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x04 J6
+U 1 1 5DD4C86B
+P 9700 3700
+F 0 "J6" H 9780 3646 50  0000 L CNN
+F 1 "Right Motor Interface" H 9780 3601 50  0001 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 9700 3700 50  0001 C CNN
+F 3 "~" H 9700 3700 50  0001 C CNN
+	1    9700 3700
+	1    0    0    -1  
+$EndComp
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	6900 6000 10400 6000
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	10400 600  10400 6000
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	6900 600  6900 6000
+NoConn ~ 3150 3150
+NoConn ~ 3150 3050
+NoConn ~ 3150 2950
+NoConn ~ 3150 2850
+NoConn ~ 3150 2750
+NoConn ~ 3150 2650
+NoConn ~ 3150 2550
+NoConn ~ 3150 2250
+NoConn ~ 3150 2150
+NoConn ~ 3150 2050
+NoConn ~ 3150 1750
+NoConn ~ 3150 1650
+NoConn ~ 3150 1450
+Text Notes 650  5350 0    79   ~ 16
+Modules
+$Comp
+L power:GND #PWR010
+U 1 1 5DE724E0
+P 5350 3250
+F 0 "#PWR010" H 5350 3000 50  0001 C CNN
+F 1 "GND" H 5355 3077 50  0000 C CNN
+F 2 "" H 5350 3250 50  0001 C CNN
+F 3 "" H 5350 3250 50  0001 C CNN
+	1    5350 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5350 3250 5350 2650
+$Comp
+L power:+5V #PWR06
+U 1 1 5DED262C
+P 5100 1300
+F 0 "#PWR06" H 5100 1150 50  0001 C CNN
+F 1 "+5V" H 5115 1473 50  0000 C CNN
+F 2 "" H 5100 1300 50  0001 C CNN
+F 3 "" H 5100 1300 50  0001 C CNN
+	1    5100 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR09
+U 1 1 5DED76D1
+P 5350 1300
+F 0 "#PWR09" H 5350 1150 50  0001 C CNN
+F 1 "+3V3" H 5365 1473 50  0000 C CNN
+F 2 "" H 5350 1300 50  0001 C CNN
+F 3 "" H 5350 1300 50  0001 C CNN
+	1    5350 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5350 1300 5350 1350
+Text GLabel 1500 1450 0    50   Output ~ 0
+EN
+Text GLabel 1300 2050 0    50   Output ~ 0
+STEP_DIR_L
+Text GLabel 1500 1750 0    50   Output ~ 0
+IO34
+Text GLabel 1500 1850 0    50   Output ~ 0
+IO35
+Text GLabel 1500 2850 0    50   Output ~ 0
+IO9
+Text GLabel 1500 2950 0    50   Output ~ 0
+IO10
+Text GLabel 1500 3050 0    50   Output ~ 0
+IO11
+Wire Wire Line
+	1500 1450 2050 1450
+Wire Wire Line
+	1500 1550 2050 1550
+Wire Wire Line
+	1500 1650 2050 1650
+Wire Wire Line
+	1500 1750 2050 1750
+Wire Wire Line
+	1500 1850 2050 1850
+Wire Wire Line
+	5100 3150 5100 1300
+Text GLabel 4800 2350 0    50   Output ~ 0
+STEP_ENABLE
+Text GLabel 4800 1950 0    50   Output ~ 0
+STEP_STEP_L
+Text GLabel 4800 2150 0    50   Output ~ 0
+STEP_STEP_R
+Text GLabel 4800 2250 0    50   Output ~ 0
+STEP_DIR_R
+Text GLabel 1300 2750 0    50   Output ~ 0
+SERVO_PWM
+Text GLabel 4950 1450 0    50   Output ~ 0
+EN
+Text GLabel 4800 2050 0    50   Output ~ 0
+STEP_DIR_L
+Text GLabel 4950 1750 0    50   Output ~ 0
+IO34
+Text GLabel 4950 1850 0    50   Output ~ 0
+IO35
+Text GLabel 4950 1650 0    50   Output ~ 0
+IO39
+Text GLabel 4950 2850 0    50   Output ~ 0
+IO9
+Text GLabel 4950 2950 0    50   Output ~ 0
+IO10
+Text GLabel 4950 3050 0    50   Output ~ 0
+IO11
+Wire Wire Line
+	2050 1950 1300 1950
+Wire Wire Line
+	2050 2050 1300 2050
+Wire Wire Line
+	2050 2850 1500 2850
+Wire Wire Line
+	2050 2950 1500 2950
+Wire Wire Line
+	2050 3050 1500 3050
+$Comp
+L power:GND #PWR0101
+U 1 1 5E1EF008
+P 1850 3250
+F 0 "#PWR0101" H 1850 3000 50  0001 C CNN
+F 1 "GND" H 1855 3077 50  0000 C CNN
+F 2 "" H 1850 3250 50  0001 C CNN
+F 3 "" H 1850 3250 50  0001 C CNN
+	1    1850 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0101
+U 1 1 5E310449
+P 9850 6400
+F 0 "#FLG0101" H 9850 6475 50  0001 C CNN
+F 1 "PWR_FLAG" H 9850 6573 50  0000 C CNN
+F 2 "" H 9850 6400 50  0001 C CNN
+F 3 "~" H 9850 6400 50  0001 C CNN
+	1    9850 6400
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0102
+U 1 1 5E310D86
+P 10150 6400
+F 0 "#FLG0102" H 10150 6475 50  0001 C CNN
+F 1 "PWR_FLAG" H 10150 6573 50  0000 C CNN
+F 2 "" H 10150 6400 50  0001 C CNN
+F 3 "~" H 10150 6400 50  0001 C CNN
+	1    10150 6400
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0103
+U 1 1 5E311545
+P 9550 6400
+F 0 "#FLG0103" H 9550 6475 50  0001 C CNN
+F 1 "PWR_FLAG" H 9550 6573 50  0000 C CNN
+F 2 "" H 9550 6400 50  0001 C CNN
+F 3 "~" H 9550 6400 50  0001 C CNN
+	1    9550 6400
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:+BATT #PWR0102
+U 1 1 5E3136CE
+P 9550 6400
+F 0 "#PWR0102" H 9550 6250 50  0001 C CNN
+F 1 "+BATT" H 9565 6573 50  0000 C CNN
+F 2 "" H 9550 6400 50  0001 C CNN
+F 3 "" H 9550 6400 50  0001 C CNN
+	1    9550 6400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1150 5850 1150 6000
+Wire Wire Line
+	1150 6000 1350 6000
+$Comp
+L balancebot-components:+VMOT #PWR0103
+U 1 1 5E3294E2
+P 9850 6400
+F 0 "#PWR0103" H 9850 6250 50  0001 C CNN
+F 1 "+VMOT" H 9850 6573 50  0000 C CNN
+F 2 "" H 9850 6400 50  0001 C CNN
+F 3 "" H 9850 6400 50  0001 C CNN
+	1    9850 6400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1350 6100 800  6100
+Wire Wire Line
+	800  6100 800  5850
+$Comp
+L power:GND #PWR0104
+U 1 1 5E33EFF9
+P 10150 6400
+F 0 "#PWR0104" H 10150 6150 50  0001 C CNN
+F 1 "GND" H 10155 6227 50  0000 C CNN
+F 2 "" H 10150 6400 50  0001 C CNN
+F 3 "" H 10150 6400 50  0001 C CNN
+	1    10150 6400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7900 1200 7900 1500
+Wire Wire Line
+	7900 3200 7900 3500
+Wire Wire Line
+	5500 2350 4800 2350
+Wire Wire Line
+	5350 2650 5500 2650
+Wire Wire Line
+	5500 2750 4800 2750
+Wire Wire Line
+	4950 2850 5500 2850
+Wire Wire Line
+	5500 2950 4950 2950
+Wire Wire Line
+	5500 3050 4950 3050
+Wire Wire Line
+	5500 1350 5350 1350
+Wire Wire Line
+	4950 1450 5500 1450
+Wire Wire Line
+	4950 1550 5500 1550
+Wire Wire Line
+	4950 1650 5500 1650
+Wire Wire Line
+	4950 1750 5500 1750
+Wire Wire Line
+	4950 1850 5500 1850
+Wire Wire Line
+	5500 1950 4800 1950
+Wire Wire Line
+	4800 2050 5500 2050
+Wire Wire Line
+	5500 2150 4800 2150
+Wire Wire Line
+	5500 2250 4800 2250
+Wire Wire Line
+	5500 3150 5100 3150
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	600  5500 4300 5500
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	4300 7900 600  7900
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	4400 5550 4400 7350
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	6200 5550 6200 7350
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	600  5400 6700 5400
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	600  600  6700 600 
+Wire Wire Line
+	8200 3500 7900 3500
+Connection ~ 7900 3500
+Wire Wire Line
+	7900 3500 7900 3600
+Wire Wire Line
+	8200 3600 7900 3600
+Connection ~ 7900 3600
+Wire Wire Line
+	7900 3600 7900 3700
+Wire Wire Line
+	8200 1500 7900 1500
+Connection ~ 7900 1500
+Wire Wire Line
+	7900 1500 7900 1600
+Wire Wire Line
+	8200 1600 7900 1600
+Connection ~ 7900 1600
+Wire Wire Line
+	7900 1600 7900 1700
+Wire Wire Line
+	8550 5100 8550 5250
+Wire Wire Line
+	8650 5100 8550 5100
+Wire Wire Line
+	8650 4900 8400 4900
+Wire Wire Line
+	8550 5000 8550 4800
+$Comp
+L power:GND #PWR020
+U 1 1 5DD210B7
+P 8550 5250
+F 0 "#PWR020" H 8550 5000 50  0001 C CNN
+F 1 "GND" H 8555 5077 50  0000 C CNN
+F 2 "" H 8550 5250 50  0001 C CNN
+F 3 "" H 8550 5250 50  0001 C CNN
+	1    8550 5250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR019
+U 1 1 5DD20B47
+P 8550 4800
+F 0 "#PWR019" H 8550 4650 50  0001 C CNN
+F 1 "+5V" H 8565 4973 50  0000 C CNN
+F 2 "" H 8550 4800 50  0001 C CNN
+F 3 "" H 8550 4800 50  0001 C CNN
+	1    8550 4800
+	1    0    0    -1  
+$EndComp
+Text GLabel 8400 4900 0    50   Input ~ 0
+SERVO_PWM
+Wire Wire Line
+	8650 5000 8550 5000
+$Comp
+L power:GND #PWR021
+U 1 1 5DD05C61
+P 2950 7500
+F 0 "#PWR021" H 2955 7327 50  0001 C CNN
+F 1 "GND" H 2955 7327 50  0000 C CNN
+F 2 "" H 2950 7500 50  0001 C CNN
+F 3 "" H 2950 7500 50  0001 C CNN
+	1    2950 7500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR013
+U 1 1 5DD2EFA7
+P 2600 7500
+F 0 "#PWR013" H 2605 7327 50  0001 C CNN
+F 1 "GND" H 2605 7327 50  0000 C CNN
+F 2 "" H 2600 7500 50  0001 C CNN
+F 3 "" H 2600 7500 50  0001 C CNN
+	1    2600 7500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR011
+U 1 1 5DD3468A
+P 2250 7500
+F 0 "#PWR011" H 2255 7327 50  0001 C CNN
+F 1 "GND" H 2255 7327 50  0000 C CNN
+F 2 "" H 2250 7500 50  0001 C CNN
+F 3 "" H 2250 7500 50  0001 C CNN
+	1    2250 7500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR08
+U 1 1 5DD39FD1
+P 1900 7500
+F 0 "#PWR08" H 1905 7327 50  0001 C CNN
+F 1 "GND" H 1905 7327 50  0000 C CNN
+F 2 "" H 1900 7500 50  0001 C CNN
+F 3 "" H 1900 7500 50  0001 C CNN
+	1    1900 7500
+	1    0    0    -1  
+$EndComp
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	600  5500 600  7900
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	4300 5500 4300 7900
+$Comp
+L Mechanical:MountingHole_Pad H4
+U 1 1 5DD05082
+P 2950 7400
+F 0 "H4" H 3050 7403 50  0000 L CNN
+F 1 "MountingHole_Pad" H 3050 7358 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 2950 7400 50  0001 C CNN
+F 3 "~" H 2950 7400 50  0001 C CNN
+	1    2950 7400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H3
+U 1 1 5DD2EFA1
+P 2600 7400
+F 0 "H3" H 2700 7403 50  0000 L CNN
+F 1 "MountingHole_Pad" H 2700 7358 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 2600 7400 50  0001 C CNN
+F 3 "~" H 2600 7400 50  0001 C CNN
+	1    2600 7400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H2
+U 1 1 5DD34684
+P 2250 7400
+F 0 "H2" H 2350 7403 50  0000 L CNN
+F 1 "MountingHole_Pad" H 2350 7358 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 2250 7400 50  0001 C CNN
+F 3 "~" H 2250 7400 50  0001 C CNN
+	1    2250 7400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H1
+U 1 1 5DD39FCB
+P 1900 7400
+F 0 "H1" H 2000 7403 50  0000 L CNN
+F 1 "MountingHole_Pad" H 2000 7358 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 1900 7400 50  0001 C CNN
+F 3 "~" H 1900 7400 50  0001 C CNN
+	1    1900 7400
+	1    0    0    -1  
+$EndComp
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	600  600  600  5400
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	6700 600  6700 5400
+Text GLabel 4950 1550 0    50   Output ~ 0
+IO36
+$Comp
+L Connector_Generic:Conn_01x19 J3
+U 1 1 5DE328D8
+P 5700 2250
+F 0 "J3" H 5700 1200 50  0000 C CNN
+F 1 "Passthrough" H 5850 2250 50  0001 L CNN
+F 2 "balancebot-footprints:bb_PinSocket_1x19_P2.54mm_Vertical" H 5700 2250 50  0001 C CNN
+F 3 "~" H 5700 2250 50  0001 C CNN
+	1    5700 2250
+	1    0    0    1   
+$EndComp
+Text Notes 5850 2200 0    50   ~ 0
+1.0” ESP32 Support\nInterface
+$Comp
+L Connector_Generic:Conn_01x03 J4
+U 1 1 5DD2056F
+P 8850 5000
+F 0 "J4" H 9000 5050 50  0000 C CNN
+F 1 "Servo Interface" H 9250 4950 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 8850 5000 50  0001 C CNN
+F 3 "~" H 8850 5000 50  0001 C CNN
+	1    8850 5000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5500 2450 4950 2450
+Wire Wire Line
+	5500 2550 4950 2550
+Text GLabel 4950 2550 0    50   Output ~ 0
+IO12
+Text GLabel 4950 2450 0    50   Output ~ 0
+IO14
+Wire Wire Line
+	2050 2550 1500 2550
+Wire Wire Line
+	2050 2450 1500 2450
+Text GLabel 1500 2550 0    50   Output ~ 0
+IO12
+Text GLabel 1500 2450 0    50   Output ~ 0
+IO14
+Wire Wire Line
+	3500 1850 3150 1850
+Wire Wire Line
+	3500 1550 3150 1550
+Text GLabel 3500 1850 2    50   Output ~ 0
+MPU_SDA
+Text GLabel 3500 1550 2    50   Output ~ 0
+MPU_SCL
+Text GLabel 1500 1550 0    50   Output ~ 0
+IO36
+Text GLabel 1500 1650 0    50   Output ~ 0
+IO39
+Wire Wire Line
+	2050 2350 1300 2350
+$Comp
+L power:+3V3 #PWR0106
+U 1 1 5E05816F
+P 9050 1200
+F 0 "#PWR0106" H 9050 1050 50  0001 C CNN
+F 1 "+3V3" H 9065 1373 50  0000 C CNN
+F 2 "" H 9050 1200 50  0001 C CNN
+F 3 "" H 9050 1200 50  0001 C CNN
+	1    9050 1200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9000 2000 9050 2000
+Wire Wire Line
+	9050 2000 9050 1200
+$Comp
+L power:+3V3 #PWR0108
+U 1 1 5E05E3AC
+P 9050 3200
+F 0 "#PWR0108" H 9050 3050 50  0001 C CNN
+F 1 "+3V3" H 9065 3373 50  0000 C CNN
+F 2 "" H 9050 3200 50  0001 C CNN
+F 3 "" H 9050 3200 50  0001 C CNN
+	1    9050 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9000 4000 9050 4000
+Wire Wire Line
+	9050 4000 9050 3200
+Text GLabel 3500 2450 2    50   Output ~ 0
+MPU_INTERRUPT
+Text GLabel 5100 6750 0    50   Input ~ 0
+MPU_INTERRUPT
+Wire Wire Line
+	5250 6150 5250 6750
+Wire Wire Line
+	5250 6750 5250 6850
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	4400 7350 6200 7350
+Wire Notes Line width 8 style solid rgb(0, 0, 0)
+	4400 5550 6200 5550
+Text GLabel 4800 2750 0    50   Output ~ 0
+SERVO_PWM
+NoConn ~ 3150 2350
+Wire Wire Line
+	3150 2450 3500 2450
+Wire Wire Line
+	3350 1950 3350 3250
+Connection ~ 3350 1950
+Wire Wire Line
+	5100 6750 5400 6750
+$EndSCHEMATC

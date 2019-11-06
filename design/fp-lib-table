@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name balancebot-footprints)(type KiCad)(uri ${KIPRJMOD}/balancebot-footprints.pretty)(options "")(descr ""))
+  (lib (name gy-521)(type Legacy)(uri ${KIPRJMOD}/gy-521.mod)(options "")(descr "")(disabled))
+)
