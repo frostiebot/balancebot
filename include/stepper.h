@@ -5,24 +5,16 @@
 
 #include <driver/gpio.h>
 
-#define MAX_ACCELERATION    14 // Maximum motor acceleration (MAX RECOMMENDED VALUE: 20) (default:14)
-#define MICROSTEPPING       32
+#define MAX_ACCELERATION        14 // Maximum motor acceleration (MAX RECOMMENDED VALUE: 20) (default:14)
+#define ZERO_SPEED              0xffffff
 
-#define ZERO_SPEED          0xffffff
-
-// #define LEFT_RMT_CHANNEL  0
-// #define RIGHT_RMT_CHANNEL 1
-
-// void setupStepper();
-// void enableSteppers();
-// void disableSteppers();
-
-// void setStepperSpeed(int16_t speed);
+#define STEPS_PER_REVOLUTION    200
+#define MICROSTEPPING           32
 
 
 typedef enum {
-  FORWARD = 0,
-  BACKWARD = 1,
+  FORWARD = 0,    // GPIO Level Low
+  BACKWARD = 1,   // GPIO Level High
 } stepper_direction_t;
 
 
@@ -30,7 +22,7 @@ class Stepper {
   public:
     Stepper();
 
-    void attach(gpio_num_t stepPin, gpio_num_t directionPin, gpio_num_t enablePin);
+    void attach(gpio_num_t stepPin, gpio_num_t directionPin, gpio_num_t disablePin);
 
     void setDirection(stepper_direction_t direction);
     void setDisabled(bool disabled);
@@ -39,7 +31,7 @@ class Stepper {
     int16_t getSpeed();
 
   private:
-    gpio_num_t _enablePin;
+    gpio_num_t _disablePin;
     gpio_num_t _directionPin;
     gpio_num_t _stepPin;
 

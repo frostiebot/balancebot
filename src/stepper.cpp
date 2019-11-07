@@ -5,35 +5,26 @@ Stepper::Stepper() {
   _speed = 0;
 };
 
-void Stepper::attach(gpio_num_t stepPin, gpio_num_t directionPin, gpio_num_t enablePin) {
+void Stepper::attach(gpio_num_t stepPin, gpio_num_t directionPin, gpio_num_t disablePin) {
   _stepPin = stepPin;
   _directionPin = directionPin;
-  _enablePin = enablePin;
+  _disablePin = disablePin;
 
   gpio_set_direction(_stepPin, GPIO_MODE_OUTPUT);
   gpio_set_direction(_directionPin, GPIO_MODE_OUTPUT);
-  gpio_set_direction(_enablePin, GPIO_MODE_OUTPUT);
+
+  gpio_set_direction(_disablePin, GPIO_MODE_OUTPUT);
+
+  gpio_set_level(_stepPin, 0);
+  gpio_set_level(_directionPin, 0);
 }
-
-
-// Stepper::Stepper(gpio_num_t stepPin, gpio_num_t directionPin, gpio_num_t enablePin) {
-//   _stepPin = stepPin;
-//   _directionPin = directionPin;
-//   _enablePin = enablePin;
-
-//   gpio_set_direction(_stepPin, GPIO_MODE_OUTPUT);
-//   gpio_set_direction(_directionPin, GPIO_MODE_OUTPUT);
-//   gpio_set_direction(_enablePin, GPIO_MODE_OUTPUT);
-
-//   _speed = 0;
-// }
 
 void Stepper::setDirection(stepper_direction_t direction) {
   gpio_set_level(_directionPin, direction);
 }
 
 void Stepper::setDisabled(bool disabled) {
-  gpio_set_level(_enablePin, disabled);
+  gpio_set_level(_disablePin, disabled);
 }
 
 void Stepper::setSpeed(int16_t speed) {
