@@ -1,0 +1,7 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+// #define ENABLE_MOTION_CALIBRATE_OFFSETS
+// #define ENABLE_MOTION_OUTPUT_TEAPOT
+
+#endif

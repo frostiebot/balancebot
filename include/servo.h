@@ -1,15 +1,12 @@
 #ifndef SERVO_H
 #define SERVO_H
 
-#include "cpu_map.h"
-
 #include <driver/mcpwm.h>
 
-#define SERVO_MIN_DUTY_uS  500  // Minimum pulse width in microsecond
-#define SERVO_MAX_DUTY_uS  2500 // Maximum pulse width in microsecond
-#define SERVO_MAX_ANGLE    180  // Maximum angle in degree upto which servo can rotate
-#define SERVO_FREQUENCY    50
-
+#define SERVO_MIN_DUTY_uS  (500)  // Minimum pulse width in microsecond
+#define SERVO_MAX_DUTY_uS  (2500) // Maximum pulse width in microsecond
+#define SERVO_MAX_ANGLE    (180)  // Maximum angle in degree upto which servo can rotate
+#define SERVO_FREQUENCY    (50)
 
 typedef struct {
   uint32_t min_duty_us;

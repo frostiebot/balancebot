@@ -1,4 +1,7 @@
+#include "cpu_map.h"
 #include "servo.h"
+
+#include <driver/mcpwm.h>
 
 Servo::Servo() {}
 

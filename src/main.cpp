@@ -2,14 +2,16 @@
 
 #include <Arduino.h>
 
-
 void setup() {
   Serial.begin(115200);
 
+  #ifdef ENABLE_MOTION_CALIBRATE_OFFSETS
+  beginCalibrate();
+  #else
+  setupArmServo();
   setupMotionSensor();
   // setupSerial();
   // setupStepper();
-  setupArmServo();
 
   // s.attach(SERVO_PWM_PIN);
   // s.setAngle(0);
@@ -20,6 +22,7 @@ void setup() {
   // s.setAngle(45);
   // delay(5000);
   // s.setAngle(180);
+  #endif
 }
 
 void loop() {
