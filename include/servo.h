@@ -3,8 +3,8 @@
 
 #include <driver/mcpwm.h>
 
-#define SERVO_MIN_DUTY_uS  (500)  // Minimum pulse width in microsecond
-#define SERVO_MAX_DUTY_uS  (2500) // Maximum pulse width in microsecond
+#define SERVO_MIN_DUTY_MS  (500)  // Minimum pulse width in microsecond
+#define SERVO_MAX_DUTY_MS  (2500) // Maximum pulse width in microsecond
 #define SERVO_MAX_ANGLE    (180)  // Maximum angle in degree upto which servo can rotate
 #define SERVO_FREQUENCY    (50)
 
@@ -31,8 +31,8 @@ class Servo {
 
   private:
     servo_config_t config = {
-      SERVO_MIN_DUTY_uS,
-      SERVO_MAX_DUTY_uS,
+      SERVO_MIN_DUTY_MS,
+      SERVO_MAX_DUTY_MS,
       SERVO_MAX_ANGLE,
       {
         SERVO_FREQUENCY,

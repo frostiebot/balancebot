@@ -76,7 +76,7 @@ void setupMotionSensor() {
     ESP_LOGD(TAG, "Enabling DMP...");
     mpu.setDMPEnabled(true);
 
-    constexpr gpio_config_t gpioConfig{
+    constexpr gpio_config_t gpioConfig {
       .pin_bit_mask = (1 << MPU_INTERRUPT_PIN),
       .mode = GPIO_MODE_INPUT,
       .pull_up_en = GPIO_PULLUP_DISABLE,
@@ -180,8 +180,8 @@ void computePIDTask(void* pvParameters) {
   vTaskDelay(2000 / portTICK_PERIOD_MS);
 
   while (true) {
-    if (pid.Compute())
-      ESP_LOGD(TAG, "PID COMPUTED - Input: %+6.2f\tOutput: %+6.2f", input, output);
+    // if (pid.Compute())
+    //   ESP_LOGD(TAG, "PID COMPUTED - Input: %+6.2f\tOutput: %+6.2f", input, output);
     // ESP_LOGD(TAG, "PID - INPUT: %d\tOUTPUT: %d\t| MPU - Yaw: %+6.1f\tPitch: %+6.1f\tRoll: %+6.1f", input, output, ypr[0], ypr[1], ypr[2]);
     ESP_LOGD(TAG, "MPU - Yaw: %+6.1f\tPitch: %+6.1f\tRoll: %+6.1f\tRM: %+6.1f\t", ypr[0], ypr[1], ypr[2], (ypr[2] * 180.0 / M_PI + 180.0));
     vTaskDelay(10 / portTICK_PERIOD_MS);

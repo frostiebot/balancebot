@@ -1,97 +1,112 @@
 #include "stepper.h"
 
+// #include <esp32-hal-ledc.h>
+#include <driver/ledc.h>
+#include <stdlib.h>
 
-Stepper::Stepper() {
-  _speed = 0;
-};
+Stepper::Stepper() {};
 
-void Stepper::attach(gpio_num_t stepPin, gpio_num_t directionPin, gpio_num_t disablePin) {
-  _stepPin = stepPin;
-  _directionPin = directionPin;
-  _disablePin = disablePin;
+Stepper::Stepper(gpio_num_t stepPin, gpio_num_t directionPin) {
+  attach(stepPin, directionPin);
+}
 
-  gpio_set_direction(_stepPin, GPIO_MODE_OUTPUT);
-  gpio_set_direction(_directionPin, GPIO_MODE_OUTPUT);
+void Stepper::attach(gpio_num_t stepPin, gpio_num_t directionPin) {
+  this->_stepPin = stepPin;
+  this->_directionPin = directionPin;
 
-  gpio_set_direction(_disablePin, GPIO_MODE_OUTPUT);
+  gpio_set_direction(this->_stepPin, GPIO_MODE_OUTPUT);
+  gpio_set_direction(this->_directionPin, GPIO_MODE_OUTPUT);
 
-  gpio_set_level(_stepPin, 0);
-  gpio_set_level(_directionPin, 0);
+  gpio_set_level(this->_stepPin, 0);
+  // gpio_set_level(this->_directionPin, 0);
+  // this->setDirection(FORWARD);
+  this->setSpeed(0);
+
+  // _ledc_timer.duty_resolution = LEDC_TIMER_13_BIT;
+  // _ledc_timer.speed_mode = LEDC_HIGH_SPEED_MODE;
+  // _ledc_timer.timer_num = LEDC_TIMER_0;
+  // _ledc_timer.freq_hz = 5000;
+
+  // ledc_timer_config(&_ledc_timer);
+
+  // _ledc_conf.gpio_num = this->_stepPin;
+  // _ledc_conf.channel = LEDC_CHANNEL_0;
+  // _ledc_conf.duty = 0;
+  // _ledc_conf.hpoint = 0;
+  // _ledc_conf.intr_type = LEDC_INTR_DISABLE;
+  // _ledc_conf.speed_mode = LEDC_HIGH_SPEED_MODE;
+  // _ledc_conf.timer_sel = LEDC_TIMER_0;
+
+  // ledc_channel_config(&_ledc_conf);
+  this->configureLedcTimer();
+  this->configureLedcChannel();
+}
+
+stepper_direction_t Stepper::getDirection() {
+  return gpio_get_level(_directionPin) == 0 ? FORWARD : BACKWARD;
 }
 
 void Stepper::setDirection(stepper_direction_t direction) {
   gpio_set_level(_directionPin, direction);
 }
 
-void Stepper::setDisabled(bool disabled) {
-  gpio_set_level(_disablePin, disabled);
+int Stepper::getSpeed() {
+  return int(abs(_speed));
 }
 
-void Stepper::setSpeed(int16_t speed) {
-  // long timer_period;
-  // int16_t _speed, speed_M1, dir_M1;
+/**
+ * TODO: If the stepper is running, we need to stop sending STEP
+ * pulses, set the direction via gpio then wait _at least_ 650ns
+ * before sending STEP pulses again.
+ *
+ */
+void Stepper::setSpeed(int speed) {
+  this->_speed = speed;
+  // stepper_direction_t currentDirection = getDirection();
+  // if (_speed < 0 && currentDirection != BACKWARD) setDirection(BACKWARD);
+  // if (_speed > 0 && currentDirection != FORWARD) setDirection(FORWARD);
 
-  // speed_M1 = 0;
-  // dir_M1 = 1;
-
-  // // Limit max speed?
-
-  // // WE LIMIT MAX ACCELERATION of the motors
-  // if ((speed_M1 - speed) > MAX_ACCELERATION)
-  //   speed_M1 -= MAX_ACCELERATION;
-  // else if ((speed_M1 - speed) < -MAX_ACCELERATION)
-  //   speed_M1 += MAX_ACCELERATION;
-  // else
-  //   speed_M1 = speed;
-
-  // #if MICROSTEPPING == 32
-  //   _speed = speed_M1 * 75;
-  // #endif
-
-  // #if MICROSTEPPING == 16
-  //   _speed = speed_M1 * 50; // Adjust factor from control output speed to real motor speed in steps/second
-  // #else
-  //   _speed = speed_M1 * 25; // 1/8 Microstepping
-  // #endif
-
-  // if (_speed == 0) {
-  //   timer_period = ZERO_SPEED;
-  //   dir_M1 = 0;
-  // } else if (_speed > 0) {
-  //   timer_period = 2000000 / _speed; // 2Mhz timer
-  //   dir_M1 = 1;
-  //   // digitalWrite(PIN_MOTOR1_DIR, HIGH);
-  //   setDirection(FORWARD);
-  // } else {
-  //   timer_period = 2000000 / -_speed;
-  //   dir_M1 = -1;
-  //   // digitalWrite(PIN_MOTOR1_DIR, LOW);
-  //   setDirection(BACKWARD);
-  // }
-  // if (timer_period > ZERO_SPEED) // Check for minimun speed (maximun period without overflow)
-  //   timer_period = ZERO_SPEED;
-
-  // // timerAlarmWrite(timer1, timer_period, true);
+  setDirection(this->_speed < 0 ? BACKWARD : FORWARD);
 }
 
-int16_t Stepper::getSpeed() {
-  return _speed;
+void Stepper::go() {
+  // ledc_set_duty(_ledc_conf.speed_mode, _ledc_conf.channel, 250);
+  // ledc_update_duty(_ledc_conf.speed_mode, _ledc_conf.channel);
+  ledc_set_duty_and_update(this->_ledc_conf.speed_mode, this->_ledc_conf.channel, 250, 0);
 }
 
-    // void setupStepper() {
-    //   gpio_set_direction(STEPPER_ENABLE_PIN, GPIO_MODE_OUTPUT);
+void Stepper::stop() {
+  ledc_stop(this->_ledc_conf.speed_mode, this->_ledc_conf.channel, 0);
+}
 
-    //   gpio_set_direction(STEPPER_LEFT_DIR_PIN, GPIO_MODE_OUTPUT);
-    // 	gpio_set_direction(STEPPER_LEFT_STEP_PIN, GPIO_MODE_OUTPUT);
+void Stepper::configureLedcTimer() {
+  // 13-bit value == 2**13 (meaning max 8192) - this allows us to use
+  // high microstepping (eg. 32) where the math is
+  // (360 / STEP_ANGLE) * MICROSTEPPING_LEVEL
+  // eg. (360 / 1.8) * 32 = 6400
+  this->_ledc_timer.duty_resolution = LEDC_TIMER_13_BIT;
+  this->_ledc_timer.speed_mode = LEDC_HIGH_SPEED_MODE;
+  this->_ledc_timer.timer_num = LEDC_TIMER_0;
+  // freq_hz is how fast/long(?) to generate the square wave.
+  // DRV8825 needs at least 1.9uS for each HIGH and LOW step pulse
+  // soooo... I need to learn math
+  this->_ledc_timer.freq_hz = 500000;
 
-    // 	gpio_set_direction(STEPPER_RIGHT_DIR_PIN, GPIO_MODE_OUTPUT);
-    // 	gpio_set_direction(STEPPER_RIGHT_STEP_PIN, GPIO_MODE_OUTPUT);
-    // }
+  ledc_timer_config(&_ledc_timer);
+}
 
-    // void enableSteppers() {
-    //   gpio_set_level(STEPPER_ENABLE_PIN, 0);
-    // }
+void Stepper::configureLedcChannel() {
+  this->_ledc_conf.gpio_num = this->_stepPin;
+  this->_ledc_conf.channel = LEDC_CHANNEL_0;
+  this->_ledc_conf.duty = 0;
+  this->_ledc_conf.hpoint = 0;
+  this->_ledc_conf.intr_type = LEDC_INTR_DISABLE;
+  this->_ledc_conf.speed_mode = LEDC_HIGH_SPEED_MODE;
+  this->_ledc_conf.timer_sel = LEDC_TIMER_0;
 
-    // void disableSteppers() {
-    //   gpio_set_level(STEPPER_ENABLE_PIN, 1);
-    // }
+  ledc_channel_config(&_ledc_conf);
+  // Seems like we need to install a fade function (or use default
+  // by passing 0) to be able to use the thread-safe
+  // `ledc_set_duty_and_update` call in `Stepper::go`
+  ledc_fade_func_install(0);
+}

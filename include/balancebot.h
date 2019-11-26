@@ -5,6 +5,9 @@
 #else
 #include "serial.h"
 #include "motion.h"
-#include "stepper.h"
+
+#include "stepper_controller.h"
+
+// #include "stepper.h"
 #include "arm_servo.h"
 #endif
