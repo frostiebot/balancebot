@@ -6,8 +6,8 @@ $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
 Title "BalanceBot"
-Date "2019-11-17"
-Rev "0.3.4"
+Date "2020-05-05"
+Rev "0.4.5"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -295,75 +295,75 @@ NoConn ~ 5400 6650
 $Comp
 L power:GND #PWR03
 U 1 1 5DBD6036
-P 800 6800
-F 0 "#PWR03" H 805 6627 50  0001 C CNN
-F 1 "GND" H 805 6627 50  0000 C CNN
-F 2 "" H 800 6800 50  0001 C CNN
-F 3 "" H 800 6800 50  0001 C CNN
-	1    800  6800
+P 1050 6800
+F 0 "#PWR03" H 1055 6627 50  0001 C CNN
+F 1 "GND" H 1055 6627 50  0000 C CNN
+F 2 "" H 1050 6800 50  0001 C CNN
+F 3 "" H 1050 6800 50  0001 C CNN
+	1    1050 6800
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+BATT #PWR02
 U 1 1 5DBDE325
-P 800 6550
-F 0 "#PWR02" H 800 6400 50  0001 C CNN
-F 1 "+BATT" H 815 6723 50  0000 C CNN
-F 2 "" H 800 6550 50  0001 C CNN
-F 3 "" H 800 6550 50  0001 C CNN
-	1    800  6550
+P 1050 6550
+F 0 "#PWR02" H 1050 6400 50  0001 C CNN
+F 1 "+BATT" H 1065 6723 50  0000 C CNN
+F 2 "" H 1050 6550 50  0001 C CNN
+F 3 "" H 1050 6550 50  0001 C CNN
+	1    1050 6550
 	1    0    0    -1  
 $EndComp
 $Comp
 L Connector:Screw_Terminal_01x02 TB2
 U 1 1 5DBEE897
-P 1550 6650
-F 0 "TB2" H 1630 6642 50  0000 L CNN
-F 1 "6.5V-36V" H 1630 6551 50  0000 L CNN
-F 2 "balancebot-footprints:bb_TE_282837-2" H 1550 6650 50  0001 C CNN
-F 3 "https://docs.google.com/viewerng/viewer?url=https://s3.amazonaws.com/snapeda/datasheet/282837-2_TE_Connectivity.pdf" H 1550 6650 50  0001 C CNN
-	1    1550 6650
+P 1800 6650
+F 0 "TB2" H 1880 6642 50  0000 L CNN
+F 1 "7V-36V" H 1880 6551 50  0000 L CNN
+F 2 "balancebot-footprints:bb_TE_282837-2" H 1800 6650 50  0001 C CNN
+F 3 "https://docs.google.com/viewerng/viewer?url=https://s3.amazonaws.com/snapeda/datasheet/282837-2_TE_Connectivity.pdf" H 1800 6650 50  0001 C CNN
+	1    1800 6650
 	1    0    0    -1  
 $EndComp
 $Comp
 L Connector:Screw_Terminal_01x02 TB1
 U 1 1 5DBF2801
-P 1550 5950
-F 0 "TB1" H 1630 5942 50  0000 L CNN
-F 1 "Switch" H 1630 5851 50  0000 L CNN
-F 2 "balancebot-footprints:bb_TE_282837-2" H 1550 5950 50  0001 C CNN
-F 3 "~" H 1550 5950 50  0001 C CNN
-	1    1550 5950
+P 1800 6050
+F 0 "TB1" H 1880 6042 50  0000 L CNN
+F 1 "Switch" H 1880 5951 50  0000 L CNN
+F 2 "balancebot-footprints:bb_TE_282837-2" H 1800 6050 50  0001 C CNN
+F 3 "~" H 1800 6050 50  0001 C CNN
+	1    1800 6050
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1350 6650 800  6650
+	1600 6650 1050 6650
 Wire Wire Line
-	800  6650 800  6550
+	1050 6650 1050 6550
 Wire Wire Line
-	1350 6750 800  6750
+	1600 6750 1050 6750
 Wire Wire Line
-	800  6750 800  6800
+	1050 6750 1050 6800
 $Comp
 L power:+BATT #PWR04
 U 1 1 5DBFE426
-P 1150 5800
-F 0 "#PWR04" H 1150 5650 50  0001 C CNN
-F 1 "+BATT" H 1165 5973 50  0000 C CNN
-F 2 "" H 1150 5800 50  0001 C CNN
-F 3 "" H 1150 5800 50  0001 C CNN
-	1    1150 5800
+P 1400 5900
+F 0 "#PWR04" H 1400 5750 50  0001 C CNN
+F 1 "+BATT" H 1415 6073 50  0000 C CNN
+F 2 "" H 1400 5900 50  0001 C CNN
+F 3 "" H 1400 5900 50  0001 C CNN
+	1    1400 5900
 	1    0    0    -1  
 $EndComp
 $Comp
 L balancebot-components:+VMOT #PWR01
 U 1 1 5DC19BB8
-P 800 5800
-F 0 "#PWR01" H 800 5650 50  0001 C CNN
-F 1 "+VMOT" H 800 5973 50  0000 C CNN
-F 2 "" H 800 5800 50  0001 C CNN
-F 3 "" H 800 5800 50  0001 C CNN
-	1    800  5800
+P 1050 5900
+F 0 "#PWR01" H 1050 5750 50  0001 C CNN
+F 1 "+VMOT" H 1050 6073 50  0000 C CNN
+F 2 "" H 1050 5900 50  0001 C CNN
+F 3 "" H 1050 5900 50  0001 C CNN
+	1    1050 5900
 	1    0    0    -1  
 $EndComp
 Text Notes 650  7850 0    79   ~ 16
@@ -432,15 +432,15 @@ Wire Wire Line
 	3500 1000 3500 1600
 Wire Wire Line
 	3300 1600 3500 1600
-Text GLabel 1450 2000 0    50   Output ~ 0
+Text GLabel 1450 1800 0    50   Output ~ 0
 MOTOR_ENABLE
 Wire Wire Line
 	2200 2400 1450 2400
 Text GLabel 1450 1600 0    50   Output ~ 0
 LEFT_MOTOR_STEP
-Text GLabel 1450 1800 0    50   Output ~ 0
-RIGHT_MOTOR_STEP
 Text GLabel 1450 1900 0    50   Output ~ 0
+RIGHT_MOTOR_STEP
+Text GLabel 1450 2000 0    50   Output ~ 0
 RIGHT_MOTOR_DIR
 Wire Wire Line
 	2200 1800 1450 1800
@@ -482,8 +482,6 @@ NoConn ~ 3300 2400
 NoConn ~ 3300 2300
 NoConn ~ 3300 2200
 NoConn ~ 3300 1900
-NoConn ~ 3300 1800
-NoConn ~ 3300 1700
 NoConn ~ 3300 1400
 NoConn ~ 3300 1300
 NoConn ~ 3300 1100
@@ -552,13 +550,13 @@ Wire Wire Line
 	1650 1500 2200 1500
 Wire Wire Line
 	5050 4250 5050 2400
-Text GLabel 4750 3450 0    50   Output ~ 0
+Text GLabel 4750 3250 0    50   Output ~ 0
 MOTOR_ENABLE
 Text GLabel 4750 3050 0    50   Output ~ 0
 LEFT_MOTOR_STEP
-Text GLabel 4750 3250 0    50   Output ~ 0
-RIGHT_MOTOR_STEP
 Text GLabel 4750 3350 0    50   Output ~ 0
+RIGHT_MOTOR_STEP
+Text GLabel 4750 3450 0    50   Output ~ 0
 RIGHT_MOTOR_DIR
 Text GLabel 1450 2400 0    50   Output ~ 0
 ARM_SERVO_PWM
@@ -644,9 +642,9 @@ F 3 "" H 9550 6400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1150 5800 1150 5950
+	1400 5900 1400 6050
 Wire Wire Line
-	1150 5950 1350 5950
+	1400 6050 1600 6050
 $Comp
 L balancebot-components:+VMOT #PWR035
 U 1 1 5E3294E2
@@ -659,9 +657,9 @@ F 3 "" H 9850 6400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1350 6050 800  6050
+	1600 6150 1050 6150
 Wire Wire Line
-	800  6050 800  5800
+	1050 6150 1050 5900
 $Comp
 L power:GND #PWR036
 U 1 1 5E33EFF9
@@ -780,12 +778,12 @@ Wire Wire Line
 $Comp
 L power:GND #PWR05
 U 1 1 5DD39FD1
-P 1500 7550
-F 0 "#PWR05" H 1505 7377 50  0001 C CNN
-F 1 "GND" H 1505 7377 50  0000 C CNN
-F 2 "" H 1500 7550 50  0001 C CNN
-F 3 "" H 1500 7550 50  0001 C CNN
-	1    1500 7550
+P 2500 7500
+F 0 "#PWR05" H 2505 7327 50  0001 C CNN
+F 1 "GND" H 2505 7327 50  0000 C CNN
+F 2 "" H 2500 7500 50  0001 C CNN
+F 3 "" H 2500 7500 50  0001 C CNN
+	1    2500 7500
 	1    0    0    -1  
 $EndComp
 Wire Notes Line width 8 style solid rgb(0, 0, 0)
@@ -795,12 +793,12 @@ Wire Notes Line width 8 style solid rgb(0, 0, 0)
 $Comp
 L Mechanical:MountingHole_Pad H1
 U 1 1 5DD39FCB
-P 1500 7350
-F 0 "H1" H 1450 7550 50  0000 L CNN
-F 1 "MountingHole_Pad" H 1600 7308 50  0001 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2" H 1500 7350 50  0001 C CNN
-F 3 "~" H 1500 7350 50  0001 C CNN
-	1    1500 7350
+P 2500 7300
+F 0 "H1" H 2450 7500 50  0000 L CNN
+F 1 "MountingHole_Pad" H 2600 7258 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 2500 7300 50  0001 C CNN
+F 3 "~" H 2500 7300 50  0001 C CNN
+	1    2500 7300
 	1    0    0    -1  
 $EndComp
 Wire Notes Line width 8 style solid rgb(0, 0, 0)
@@ -896,7 +894,6 @@ Wire Notes Line width 8 style solid rgb(0, 0, 0)
 	4400 5550 6200 5550
 Text GLabel 4750 3850 0    50   Output ~ 0
 ARM_SERVO_PWM
-NoConn ~ 3300 2000
 Wire Wire Line
 	3300 2100 3650 2100
 Wire Wire Line
@@ -918,181 +915,100 @@ $EndComp
 $Comp
 L Mechanical:MountingHole_Pad H2
 U 1 1 5DD34684
-P 1700 7350
-F 0 "H2" H 1650 7550 50  0000 L CNN
-F 1 "MountingHole_Pad" H 1800 7308 50  0001 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2" H 1700 7350 50  0001 C CNN
-F 3 "~" H 1700 7350 50  0001 C CNN
-	1    1700 7350
+P 2700 7300
+F 0 "H2" H 2650 7500 50  0000 L CNN
+F 1 "MountingHole_Pad" H 2800 7258 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 2700 7300 50  0001 C CNN
+F 3 "~" H 2700 7300 50  0001 C CNN
+	1    2700 7300
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole_Pad H3
 U 1 1 5DD2EFA1
-P 1900 7350
-F 0 "H3" H 1850 7550 50  0000 L CNN
-F 1 "MountingHole_Pad" H 2000 7308 50  0001 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2" H 1900 7350 50  0001 C CNN
-F 3 "~" H 1900 7350 50  0001 C CNN
-	1    1900 7350
+P 2900 7300
+F 0 "H3" H 2850 7500 50  0000 L CNN
+F 1 "MountingHole_Pad" H 3000 7258 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 2900 7300 50  0001 C CNN
+F 3 "~" H 2900 7300 50  0001 C CNN
+	1    2900 7300
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole_Pad H4
 U 1 1 5DD05082
-P 2100 7350
-F 0 "H4" H 2050 7550 50  0000 L CNN
-F 1 "MountingHole_Pad" H 2200 7308 50  0001 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2" H 2100 7350 50  0001 C CNN
-F 3 "~" H 2100 7350 50  0001 C CNN
-	1    2100 7350
-	1    0    0    -1  
-$EndComp
-$Comp
-L Regulator_Switching:TSR_1-2450 U2
-U 1 1 5DD35E14
-P 3650 6050
-F 0 "U2" H 3650 6417 50  0000 C CNN
-F 1 "TSR_1-2450" H 3650 6326 50  0000 C CNN
-F 2 "Converter_DCDC:Converter_DCDC_TRACO_TSR-1_THT" H 3650 5900 50  0001 L CIN
-F 3 "http://www.tracopower.com/products/tsr1.pdf" H 3650 6050 50  0001 C CNN
-	1    3650 6050
+P 3100 7300
+F 0 "H4" H 3050 7500 50  0000 L CNN
+F 1 "MountingHole_Pad" H 3200 7258 50  0001 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 3100 7300 50  0001 C CNN
+F 3 "~" H 3100 7300 50  0001 C CNN
+	1    3100 7300
 	1    0    0    -1  
 $EndComp
 $Comp
 L balancebot-components:+VMOT #PWR013
 U 1 1 5DD3834E
-P 3150 5800
-F 0 "#PWR013" H 3150 5650 50  0001 C CNN
-F 1 "+VMOT" H 3150 5973 50  0000 C CNN
-F 2 "" H 3150 5800 50  0001 C CNN
-F 3 "" H 3150 5800 50  0001 C CNN
-	1    3150 5800
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR016
-U 1 1 5DD38B2B
-P 4150 5800
-F 0 "#PWR016" H 4150 5650 50  0001 C CNN
-F 1 "+5V" H 4165 5973 50  0000 C CNN
-F 2 "" H 4150 5800 50  0001 C CNN
-F 3 "" H 4150 5800 50  0001 C CNN
-	1    4150 5800
+P 2750 5900
+F 0 "#PWR013" H 2750 5750 50  0001 C CNN
+F 1 "+VMOT" H 2750 6073 50  0000 C CNN
+F 2 "" H 2750 5900 50  0001 C CNN
+F 3 "" H 2750 5900 50  0001 C CNN
+	1    2750 5900
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR015
 U 1 1 5DD39182
-P 3650 6300
-F 0 "#PWR015" H 3655 6127 50  0001 C CNN
-F 1 "GND" H 3655 6127 50  0000 C CNN
-F 2 "" H 3650 6300 50  0001 C CNN
-F 3 "" H 3650 6300 50  0001 C CNN
-	1    3650 6300
+P 3300 6350
+F 0 "#PWR015" H 3305 6177 50  0001 C CNN
+F 1 "GND" H 3305 6177 50  0000 C CNN
+F 2 "" H 3300 6350 50  0001 C CNN
+F 3 "" H 3300 6350 50  0001 C CNN
+	1    3300 6350
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4050 5950 4150 5950
+	3000 6050 2750 6050
 Wire Wire Line
-	4150 5950 4150 5800
+	2750 6050 2750 5900
 Wire Wire Line
-	3250 5950 3150 5950
+	3100 7400 2900 7400
 Wire Wire Line
-	3150 5950 3150 5800
+	2900 7400 2700 7400
+Connection ~ 2900 7400
 Wire Wire Line
-	3650 6300 3650 6250
+	2700 7400 2500 7400
+Connection ~ 2700 7400
+Connection ~ 2500 7400
+Wire Wire Line
+	2500 7400 2500 7500
+NoConn ~ 3300 2000
+NoConn ~ 3300 1800
+NoConn ~ 3300 1700
 $Comp
-L Connector_Generic:Conn_01x02 J1
-U 1 1 5DE3E4BF
-P 2800 6650
-F 0 "J1" H 2880 6642 50  0000 L CNN
-F 1 "VIN Passthrough" H 2880 6551 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 2800 6650 50  0001 C CNN
-F 3 "~" H 2800 6650 50  0001 C CNN
-	1    2800 6650
+L Converter_DCDC:OKI-78SR-5_1.5-W36-C U2
+U 1 1 5EBE136C
+P 3300 6050
+F 0 "U2" H 3300 6292 50  0000 C CNN
+F 1 "OKI-78SR-5/1.5-W36-C" H 3300 6201 50  0000 C CNN
+F 2 "Converter_DCDC:Converter_DCDC_muRata_OKI-78SR_Vertical" H 3350 5800 50  0001 L CIN
+F 3 "https://power.murata.com/data/power/oki-78sr.pdf" H 3300 6050 50  0001 C CNN
+	1    3300 6050
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	3900 6050 3900 5900
+Wire Wire Line
+	3600 6050 3900 6050
 $Comp
-L balancebot-components:+VMOT #PWR09
-U 1 1 5DE3F97E
-P 2450 6550
-F 0 "#PWR09" H 2450 6400 50  0001 C CNN
-F 1 "+VMOT" H 2450 6723 50  0000 C CNN
-F 2 "" H 2450 6550 50  0001 C CNN
-F 3 "" H 2450 6550 50  0001 C CNN
-	1    2450 6550
+L power:+5V #PWR016
+U 1 1 5DD38B2B
+P 3900 5900
+F 0 "#PWR016" H 3900 5750 50  0001 C CNN
+F 1 "+5V" H 3915 6073 50  0000 C CNN
+F 2 "" H 3900 5900 50  0001 C CNN
+F 3 "" H 3900 5900 50  0001 C CNN
+	1    3900 5900
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:GND #PWR010
-U 1 1 5DE400D1
-P 2450 6850
-F 0 "#PWR010" H 2455 6677 50  0001 C CNN
-F 1 "GND" H 2455 6677 50  0000 C CNN
-F 2 "" H 2450 6850 50  0001 C CNN
-F 3 "" H 2450 6850 50  0001 C CNN
-	1    2450 6850
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2600 6650 2450 6650
-Wire Wire Line
-	2450 6650 2450 6550
-Wire Wire Line
-	2600 6750 2450 6750
-Wire Wire Line
-	2450 6750 2450 6850
-$Comp
-L Connector_Generic:Conn_01x02 J2
-U 1 1 5DE7D18C
-P 3350 7400
-F 0 "J2" H 3430 7392 50  0000 L CNN
-F 1 "5V Passthrough" H 3430 7301 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 3350 7400 50  0001 C CNN
-F 3 "~" H 3350 7400 50  0001 C CNN
-	1    3350 7400
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR012
-U 1 1 5DE7D7D2
-P 3000 7600
-F 0 "#PWR012" H 3005 7427 50  0001 C CNN
-F 1 "GND" H 3005 7427 50  0000 C CNN
-F 2 "" H 3000 7600 50  0001 C CNN
-F 3 "" H 3000 7600 50  0001 C CNN
-	1    3000 7600
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR011
-U 1 1 5DE9719A
-P 3000 7300
-F 0 "#PWR011" H 3000 7150 50  0001 C CNN
-F 1 "+5V" H 3015 7473 50  0000 C CNN
-F 2 "" H 3000 7300 50  0001 C CNN
-F 3 "" H 3000 7300 50  0001 C CNN
-	1    3000 7300
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3150 7400 3000 7400
-Wire Wire Line
-	3000 7400 3000 7300
-Wire Wire Line
-	3150 7500 3000 7500
-Wire Wire Line
-	3000 7500 3000 7600
-Wire Wire Line
-	2100 7450 1900 7450
-Wire Wire Line
-	1900 7450 1700 7450
-Connection ~ 1900 7450
-Wire Wire Line
-	1700 7450 1500 7450
-Connection ~ 1700 7450
-Connection ~ 1500 7450
-Wire Wire Line
-	1500 7450 1500 7550
 $EndSCHEMATC
